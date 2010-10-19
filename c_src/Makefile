@@ -27,6 +27,7 @@ $(LIB_DIR)/libjs_static.a: $(LIB_DIR)/libnspr4.a
 	@cp $(JS_DIR)/src/*.h $(INC_DIR)/js
 	@cp $(JS_DIR)/src/*.tbl $(INC_DIR)/js
 	@cp $(JS_DIR)/src/libjs_static.a $(LIB_DIR)
+	@rm -rf $(JS_DIR)/src/dist
 
 $(LIB_DIR)/libnspr4.a:
 	$(GUNZIP) -c nsprpub-$(NSPR_VER).tar.gz | $(TAR) xf -
