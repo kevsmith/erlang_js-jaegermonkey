@@ -19,8 +19,9 @@ js: $(LIB_DIR)/libjs_static.a
 
 $(LIB_DIR)/libjs_static.a: $(LIB_DIR)/libnspr4.a
 	$(GUNZIP) -c jaegermonkey.tar.gz | $(TAR) xf -
-	@cd $(JS_DIR)/src;./configure --disable-shared-js --enable-threadsafe --enable-static \
-                                      --disable-tests --with-nspr-cflags="-fPIC -I$(INC_DIR)/nspr $(LIB_DIR)/libnspr4.a"
+	@cd $(JS_DIR)/src;./configure --enable-threadsafe --enable-static \
+                                      --disable-tests --with-nspr-cflags="-I$(INC_DIR)/nspr" \
+                                      --with-nspr-libs="$(LIB_DIR)/libnspr4.a"
 	@$(MAKE) -C $(JS_DIR)/src
 	@mkdir $(INC_DIR)/js
 	@cp $(JS_DIR)/src/*.h $(INC_DIR)/js
