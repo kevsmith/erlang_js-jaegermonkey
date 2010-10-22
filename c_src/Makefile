@@ -19,7 +19,7 @@ js: $(LIB_DIR)/libjs_static.a
 
 $(LIB_DIR)/libjs_static.a: $(LIB_DIR)/libnspr4.a
 	$(GUNZIP) -c jaegermonkey.tar.gz | $(TAR) xf -
-	@cd $(JS_DIR)/src;./configure --enable-threadsafe --enable-static \
+	@cd $(JS_DIR)/src;ac_cv_visibility_pragma=no ./configure --enable-threadsafe --enable-static \
                                       --disable-tests --with-nspr-cflags="-I$(INC_DIR)/nspr" \
                                       --with-nspr-libs="$(LIB_DIR)/libnspr4.a"
 	@$(MAKE) -C $(JS_DIR)/src
